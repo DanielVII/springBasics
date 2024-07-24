@@ -14,41 +14,53 @@
 <h3 href="install">How to install</h3>
 <p>Within IntelliJ search for Maven, click on it, and go to 'springBasics.Lifecycle.install', its done.</p>
 <h3 href="learned">What i learned</h3>
-<h3></h3>
-<h4>Beginning:</h4>
+<h4>Table of contents</h4>
+<ul>
+    <li><a href="#begi">Beginning</a></li>
+    <li><a href="#enti">Entity</a></li>
+    <li><a href="#transi">Transient</a></li>
+    <li><a href="#bean">Bean</a></li>
+    <li><a href="#confi">Configuration</a></li>
+    <li><a href="#repo">Repository</a></li>
+    <li><a href="#serv">Service</a></li>
+    <li><a href="#transa">Transactional</a></li>
+    <li><a href="#contro">Controller</a></li>
+    <li><a href="#auto">Autowired</a></li>
+</ul>
+<h4 id="begi">-Beginning</h4>
 <p>Everything start in the <a href="https://start.spring.io/">SpringInitializr</a> where it is possible to configure the 
 application and define the versions and dependencies. More dependencies can be added later by updating the pom.xml file.</p>
-<h3></h3>
-<h4>Entity</h4>
+
+<h4 id="enti">-Entity</h4>
 <p>The entity is the object that will be transformed into a table, and its attributes are the columns. 
 The order in which it will be shown in the GET response is the order of the attributes in the code.</p>
-<h3></h3>
-<h4>@Transient</h4>
+
+<h4 id="transi">-@Transient</h4>
 <p>This annotation indicates that an attribute 
 will not be part of the table.</p>
-<h3></h3>
-<h4>Bean</h4>
+
+<h4 id="bean">-Bean</h4>
 <p>Bean its the notation that the class gonna be managed and instantiate in spring container.</p>
-<h3></h3>
-<h4>@Configuration</h4>
+
+<h4 id="confi">-@Configuration</h4>
 <p>This annotation is used to indicate that the class contains bean definitions to be managed by the spring container.
  In that class it's possible to define multiple beans using the "@Bean" on the methods. These methods return instances of objects that Spring should manage, providing dependency injection.</p>
-<h3></h3>
-<h4>@Repository (Its a Bean)</h4>
+
+<h4 id="repo">-@Repository (Its a Bean)</h4>
 <p>This annotation its used to indicate that the class provides the mechanism for storage, retrieval, update and deletion
 operation on objects. Essentially, it marks the class as a Data Acess Object (DAO). This class will execute the querries in the database, ensuring that data acess logic is properly encapsulated.</p>
-<h3></h3>
-<h4>@Service (Its a Bean)</h4>
+
+<h4 id="serv">-@Service (Its a Bean)</h4>
 <p>This annotation its used to indicate that the class contains methods that execute the core business logic, performing operations such validations and processing data.
  After applying the business rules, the service call the "Repository" to execute the querry and interact with the database.</p>
-<h3></h3>
-<h4>@Transactional (Used in service)</h4>
+
+<h4 id="transa">-@Transactional (Used in service)</h4>
 <p>This annotation is used in the update method. When its used, there's no need to use the Repository to update the database; just update the setAttribute, and it's done.</p>
-<h3></h3>
-<h4>@Controller (Its a Bean)</h4>
+
+<h4 id="contro">-@Controller (Its a Bean)</h4>
 <p>The annotation its used to mark a class as a web controller, handling incoming web requests and returning responses. After handling the initial web request, the controller calls the "@service" to apply the business logic.</p>
-<h3></h3>
-<h4>@Autowired</h4>
+
+<h4 id="auto">-@Autowired</h4>
 <p>This annotation is used to tell Spring that the constructor or variable below it is related to the bean's repository. 
 Spring should retrieve the information from there and inject it where the annotation is placed. An example of this can 
 be found in 'src/main/java/com/example/demo/student/StudentService.java'. In that file, the constructor gets the information 
