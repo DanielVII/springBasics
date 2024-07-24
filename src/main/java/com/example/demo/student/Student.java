@@ -3,6 +3,8 @@ package com.example.demo.student;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.Period;
+//aqui é feito as tabelas
 @Entity
 @Table
 public class Student {
@@ -16,10 +18,13 @@ public class Student {
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
+
+    //A ordem que os itens estão listyados aqui é a forma q será mostrado na tela
     private Long id;
-    private String name;
     private String email;
+    private String name;
     private LocalDate dob;
+    @Transient //age não vai ser mais parte da tabela
     private Integer age;
 
     public Student() {
@@ -28,20 +33,17 @@ public class Student {
     public Student(Long id,
                    String name,
                    String email,
-                   LocalDate dob,
-                   Integer age) {
+                   LocalDate dob) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dob = dob;
-        this.age = age;
     }
 
-    public Student(Integer age,
-                   LocalDate dob,
+    public Student(String name,
                    String email,
-                   String name) {
-        this.age = age;
+                   LocalDate dob
+                   ) {
         this.dob = dob;
         this.email = email;
         this.name = name;
@@ -64,7 +66,7 @@ public class Student {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(dob, LocalDate.now()).getYears();
     }
 
     public void setId(Long id) {
@@ -90,8 +92,8 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
+                ", na='" + name + '\'' +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", dob=" + dob +
                 ", age=" + age +
